@@ -87,9 +87,7 @@ export default {
     blur() {
       this.inputSelected = false
     },
-    input(newValue) {
-      console.log('input', newValue)
-    },
+    input(newValue) {},
     enterPressed(event) {
       if (event.key === 'Enter' && this.searchInput.length) {
         this.loading = 'green'

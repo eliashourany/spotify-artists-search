@@ -70,7 +70,7 @@ export const actions = {
   clearSearchResult({ commit }) {
     commit('CLEAR_SEARCH_RESULT')
   },
-  updatePage({ commit, dispatch }) {
+  updatePage({ commit, dispatch, state }) {
     commit('UPDATE_PAGE')
     dispatch('searchArtists', state.searchValue)
   },

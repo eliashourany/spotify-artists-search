@@ -1,5 +1,5 @@
 <template>
-  <v-col sm="6" md="4" lg="3">
+  <v-col cols="12" sm="6" md="4" lg="3">
     <v-fade-transition hide-on-leave>
       <v-card
         @click="clickArtist"

@@ -8,7 +8,7 @@
 
 ```bash
 # 1. Clone the repository.
-git clone https://github.com/debs-obrien/nuxt-boilerplate-project.git my-new-project
+git clone https://github.com/eliashourany/spotify-artists-search
 
 # 2. Enter your newly-cloned folder.
 cd my-new-project

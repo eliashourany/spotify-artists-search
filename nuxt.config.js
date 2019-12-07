@@ -1,11 +1,14 @@
 import i18n from './i18n'
 
 // only add `router.base = '/<repository-name>/'` if `DEPLOY_ENV` is `GH_PAGES`
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
-    router: {
-        base: '/spotify/'
-    }
-} : {};
+const routerBase =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? {
+        router: {
+          base: '/spotify/',
+        },
+      }
+    : {}
 
 export default {
   ...routerBase,
@@ -143,6 +146,6 @@ export default {
     extend(config, ctx) {},
   },
   server: {
-        port: 3000,
-  }
+    port: 3000,
+  },
 }

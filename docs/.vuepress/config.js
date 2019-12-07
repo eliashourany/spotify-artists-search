@@ -1,6 +1,7 @@
 module.exports = {
   title: 'Spotify Artists Search',
-  description: 'A Nuxt.js + Vuetify project using the Spotify API to search artists and check their albums',
+  description:
+    'A Nuxt.js + Vuetify project using the Spotify API to search artists and check their albums',
 
   themeConfig: {
     nav: [

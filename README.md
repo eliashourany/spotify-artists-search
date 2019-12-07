@@ -1,8 +1,6 @@
 # Spotify Artist Search
 
-> This is a [Nuxt.js](https://nuxtjs.org/guide) + [Vuetify](https://vuetifyjs.com/en/) Project. You can search for Spotify artists, check their albums and open them in Spotify. 
-> The app retrieves its data through the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/)
->
+> This is a [Nuxt.js](https://nuxtjs.org/guide) + [Vuetify](https://vuetifyjs.com/en/) Project. You can search for Spotify artists, check their albums and open them in Spotify. The app retrieves its data through the [Spotify API](https://developer.spotify.com/documentation/web-api/reference/).
 
 ## Getting started
 
@@ -40,4 +38,3 @@ This project includes a `docs` folder with more details on:
 - [Editor integration](docs/editors.md)
 - [Building and deploying to production](docs/production.md)
 - [Troubleshooting](docs/troubleshooting.md)
-

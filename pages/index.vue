@@ -29,6 +29,7 @@ export default {
   methods: {
     loadSearch() {
       this.$store.dispatch('search/clearSearchResult')
+      this.$store.dispatch('search-hint/clearHints')
       this.$router.push('/search')
     },
   },

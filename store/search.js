@@ -1,4 +1,5 @@
 export const state = () => ({
+  searchInput: '',
   searchResult: null,
   searchValue: null,
   totalResult: null,
@@ -36,6 +37,7 @@ export const mutations = {
   CLEAR_SEARCH_RESULT(state) {
     state.searchResult = null
     state.searchValue = null
+    state.searchInput = ''
     state.totalResult = null
     state.offset = 0
     state.page = 1
@@ -46,12 +48,19 @@ export const mutations = {
   SET_PAGE(state, pageNbr) {
     state.page = pageNbr
   },
+  SET_SEARCH_INPUT(state, input) {
+    state.searchInput = input
+  },
+  CLEAR_PAGINATION(state) {
+    state.offset = 0
+    state.page = 1
+  },
 }
 
 export const actions = {
   searchArtists({ commit, state }, searchValue) {
     if (searchValue !== state.searchValue) {
-      commit('CLEAR_SEARCH_RESULT')
+      commit('CLEAR_PAGINATION')
     }
     commit('SET_SEARCHING_MODE', true)
     return this.$axios

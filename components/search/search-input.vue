@@ -23,40 +23,24 @@
             <v-icon :dark="inputSelected">mdi-magnify</v-icon>
           </template>
         </v-text-field>
-        <!--        <div class="search-hint">-->
-        <!--          <v-list color="white" expand tile>-->
-        <!--            <v-list-item-group>-->
-        <!--              <v-list-item>-->
-        <!--                <v-list-item-content>-->
-        <!--                  <v-list-item-title>test</v-list-item-title>-->
-        <!--                </v-list-item-content>-->
-        <!--              </v-list-item>-->
-        <!--              <v-list-item>-->
-        <!--                <v-list-item-content>-->
-        <!--                  <v-list-item-title>test</v-list-item-title>-->
-        <!--                </v-list-item-content>-->
-        <!--              </v-list-item>-->
-        <!--              <v-list-item>-->
-        <!--                <v-list-item-content>-->
-        <!--                  <v-list-item-title>test</v-list-item-title>-->
-        <!--                </v-list-item-content>-->
-        <!--              </v-list-item>-->
-        <!--            </v-list-item-group>-->
-        <!--          </v-list>-->
-        <!--        </div>-->
+        <SearchHint :visible="hintsVisible" />
       </div>
     </v-col>
   </v-row>
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import SearchHint from '~/components/search/search-hint'
 export default {
+  components: {
+    SearchHint,
+  },
   data() {
     return {
-      searchInput: '',
       loading: false,
       inputSelected: false,
       lastSearch: null,
+      hintsVisible: false,
     }
   },
   computed: {
@@ -68,10 +52,25 @@ export default {
           !this.inputSelected && this.searchInput === '' && !this.lastSearch,
       }
     },
+    searchInput: {
+      set(input) {
+        this.$store.commit('search/SET_SEARCH_INPUT', input)
+      },
+      get() {
+        return this.$store.state.search.searchInput
+      },
+    },
   },
   watch: {
     searchValue() {
       this.lastSearch = this.searchValue
+    },
+    searchInput() {
+      if (this.searchInput.length > 2) {
+        this.updateHints(this.searchInput)
+      } else {
+        this.clearHints()
+      }
     },
   },
   mounted() {
@@ -81,8 +80,10 @@ export default {
   },
   methods: {
     ...mapActions('search', ['searchArtists']),
+    ...mapActions('search-hint', ['updateHints', 'clearHints']),
     focus() {
       this.inputSelected = true
+      this.hintsVisible = true
     },
     blur() {
       this.inputSelected = false
@@ -91,6 +92,7 @@ export default {
     enterPressed(event) {
       if (event.key === 'Enter' && this.searchInput.length) {
         this.loading = 'green'
+        this.hintsVisible = false
         this.$refs.search.blur()
         this.searchArtists(this.searchInput).then(() => (this.loading = false))
       }
@@ -113,11 +115,5 @@ export default {
 .artist-rating {
   position: absolute;
   bottom: 10px;
-}
-.search-hint {
-  position: absolute;
-  top: 65px;
-  width: 100%;
-  z-index: 1;
 }
 </style>

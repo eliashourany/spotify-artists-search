@@ -24,5 +24,6 @@ module.exports = {
     'vue/attributes-order': ['off'],
     'vue/attribute-hyphenation': ['off'],
     'vue/require-component-is': ['off'],
+    "accessor-pairs": [2, {"getWithoutSet": false, "setWithoutGet": false}]
   },
 }

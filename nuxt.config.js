@@ -117,7 +117,7 @@ export default {
         access_token_endpoint: undefined,
         token_type: 'Bearer',
         redirect_uri: undefined,
-        client_id: '76341d0ea865461090fe13bacbac623f',
+        client_id: '7fc9b2beb055461e8063c770d1cefe7d',
         token_key: 'access_token',
       },
     },
